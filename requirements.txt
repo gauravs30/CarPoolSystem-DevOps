@@ -1,0 +1,5 @@
+xhtml2pdf
+gunicorn
+Django==2.1.15
+django-widget-tweaks==1.4.12
+sqlparse==0.3.1
