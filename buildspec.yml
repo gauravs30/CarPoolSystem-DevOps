@@ -6,10 +6,12 @@ phases:
         commands:
             - pip install --upgrade pip
             # Install dependencies needed for running the static analysis
-            - pip install -r requirements.txt
+            - pip install -r requirements.txt pylint
     pre_build:
         commands:
             - python --version
+            - pylint $CODEBUILD_SRC_DIR/*.py
+            - pylint $CODEBUILD_SRC_DIR/myapp/*.py
 artifacts:
     files:
         - '**/*'

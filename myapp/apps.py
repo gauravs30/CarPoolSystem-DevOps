@@ -1,3 +1,4 @@
+"""My new documentation"""
 from django.apps import AppConfig
 
 

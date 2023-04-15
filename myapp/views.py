@@ -1,3 +1,5 @@
+"""My new documentation"""
+
 from django.shortcuts import render
 from decimal import Decimal
 

@@ -1,3 +1,4 @@
+"""My new documentation"""
 from django.urls import path
 from . import views
 
