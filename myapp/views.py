@@ -1,23 +1,14 @@
 """My new documentation"""
 
-from django.shortcuts import render
 from decimal import Decimal
 
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 # Create your views here.
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpResponseRedirect
+
 from .models import User, Car, Book
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import User
-from .forms import UserLoginForm, UserRegisterForm
-from django.contrib.auth.decorators import login_required
-from decimal import Decimal
-
-
-import io
-from xhtml2pdf import pisa
-from django.template.loader import get_template
-from django.template import Context
 
 
 def home(request):
@@ -86,14 +77,14 @@ def cancellings(request):
     context = {}
     if request.method == 'POST':
         id_r = request.POST.get('car_id')
-        #seats_r = int(request.POST.get('no_seats'))
+        # seats_r = int(request.POST.get('no_seats'))
 
         try:
             book = Book.objects.get(id=id_r)
             car = Car.objects.get(id=book.carid)
             rem_r = car.rem + book.nos
             Car.objects.filter(id=book.carid).update(rem=rem_r)
-            #nos_r = book.nos - seats_r
+            # nos_r = book.nos - seats_r
             Book.objects.filter(id=id_r).update(status='CANCELLED')
             Book.objects.filter(id=id_r).update(nos=0)
             return redirect(seebookings)
