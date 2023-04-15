@@ -7,5 +7,3 @@ from .models import Car, User, Book
 admin.site.register(Car)
 admin.site.register(User)
 admin.site.register(Book)
-
-
